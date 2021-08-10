@@ -22,7 +22,7 @@ model Doctor {
 model Appointment {
   id           Int      @id @default(autoincrement())
   practineName String
-  date         DateTime
+  date         DateTime @default(now())
   time         Int
   reason       String
   doctorId     Int
