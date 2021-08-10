@@ -6,6 +6,8 @@ var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use('/users', usersRouter);
+app.use('*', (req, res) => {
+  res.json({ msg: 'All Okay' });
+});
 
 module.exports = app;
