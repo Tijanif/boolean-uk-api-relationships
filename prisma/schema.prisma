@@ -10,3 +10,34 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Doctor {
+  id           Int           @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  speciality   String
+  appointments Appointment[]
+}
+
+model Appointment {
+  id           Int      @id @default(autoincrement())
+  practineName String
+  date         DateTime
+  time         Int
+  reason       String
+  doctorId     Int
+  doctor       Doctor   @relation(fields: [doctorId], references: [id])
+}
+
+// Doctor:
+// - First name
+// - Last name
+// - Specialty
+// - Doctor has many appointments
+
+// Appointment
+// - Practice name
+// - Date
+// - Time
+// - Reason
+// - Appointment belongs to Doctor
